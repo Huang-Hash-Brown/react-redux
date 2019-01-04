@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import { Input, Button, List } from 'antd';
 // import actions
-import { getInputChangeAction, submitInputAction, deleteAction } from './store/action';
+import { getInputChangeAction, submitInputAction, deleteAction } from '../store/action';
 import 'antd/dist/antd.css';
-import store from './store';
+import store from '../store';
 
 class TodoList extends Component {
   constructor(props) {
