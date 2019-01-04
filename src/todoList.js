@@ -1,8 +1,9 @@
+// with component own state
 import React, { Component, Fragment } from 'react';
 import TodoItem from './todoItem.jsx';
 import Transition from './transition.jsx';
 import axios from 'axios';
-import './style.css';
+import './style.less';
 
 class TodoList extends Component {
   constructor(props) {
