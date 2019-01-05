@@ -1,5 +1,5 @@
 // import action types
-import { CHANGE_INPUT_VALUE, SUBMIT_LIST, DELETE_ITEM } from './action';
+import { CHANGE_INPUT_VALUE, SUBMIT_LIST, DELETE_ITEM, GET_LIST_DATA } from './action';
 
 const defaultState = {
   inputValue: '',
@@ -8,7 +8,7 @@ const defaultState = {
 
 export default (state = defaultState, action) => {
   // 将state 做一次深拷贝，避免修改原来的state产生副作用
-  const prevState = JSON.parse(JSON.stringify(state));
+  let prevState = JSON.parse(JSON.stringify(state));
   switch(action.type) {
     case CHANGE_INPUT_VALUE:
       return Object.assign(prevState, { inputValue: action.value });
@@ -17,6 +17,8 @@ export default (state = defaultState, action) => {
     case DELETE_ITEM:
       prevState.list.splice(action.index, 1);
       return Object.assign(prevState, { list: [...prevState.list] });
+    case GET_LIST_DATA:
+      return Object.assign(prevState, { list: [...action.value] });
     default:
     return state;
   }

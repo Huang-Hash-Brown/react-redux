@@ -1,7 +1,7 @@
 // with Redux
 import React, { Component } from 'react';
 // import actions
-import { getInputChangeAction, submitInputAction, deleteAction } from '../store/action';
+import { getInputChangeAction, submitInputAction, deleteAction, getTodoList } from '../store/action';
 // import UI组件
 import TodoListUI from './todoList2UI.jsx';
 import 'antd/dist/antd.css';
@@ -32,6 +32,12 @@ class TodoList extends Component {
 
   handleDelete(index) {
     const action = deleteAction(index);
+    store.dispatch(action);
+  }
+
+  componentDidMount() {
+    // getTodoList 返回的是一个异步ajax函数， 需要用 store.dispatch分发执行，否则回调函数拿不到 dispatch
+    const action = getTodoList();
     store.dispatch(action);
   }
 
